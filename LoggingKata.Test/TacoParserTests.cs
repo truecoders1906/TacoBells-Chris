@@ -13,7 +13,9 @@ namespace LoggingKata.Test
 
         [Theory]
         [InlineData("34.073638, -84.677017, Taco Bell")]
-        public void ShouldParse(string str)
+        [InlineData("34.035985, -84.683302, Taco Bell")]
+        [InlineData("34.087508, -84.575512, Taco Bell")]
+        public void ShouldParse(string line)
         {
             //Arrange
             TacoParser tacoparser = new TacoParser();
