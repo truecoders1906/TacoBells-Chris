@@ -15,7 +15,7 @@ namespace LoggingKata.Test
         [InlineData("34.073638, -84.677017, Taco Bell")]
         [InlineData("34.035985, -84.683302, Taco Bell")]
         [InlineData("34.087508, -84.575512, Taco Bell")]
-        public void ShouldParse(string line)
+        public void ShouldParse(string str)
         {
             //Arrange
             TacoParser tacoparser = new TacoParser();
@@ -30,9 +30,12 @@ namespace LoggingKata.Test
         }
 
         [Theory]
-        [InlineData(null)]
-        [InlineData("")]
-        public void ShouldFailParse(string str)
+        [InlineData(null, null)]
+        [InlineData(" ", null)]
+        [InlineData("Me", null)]
+
+
+        public void ShouldFailParse(string str, ITrackable expected)
         {
             // TODO: Complete Should Fail Parse
 
@@ -43,7 +46,7 @@ namespace LoggingKata.Test
             ITrackable actual = tacoParser.Parse(str);
 
             //Assert
-            Assert.Null(actual);
+            Assert.Equal(actual, expected);
         }
     }
 }

@@ -8,9 +8,7 @@
         readonly ILog logger = new TacoLogger();
         
         public ITrackable Parse(string line)
-        {
-
-            
+        {            
             logger.LogInfo("Begin parsing");
             // Take your line and use line.Split(',') to split it up into an array of strings, separated by the char ','
             var cells = line.Split(',');
@@ -28,6 +26,12 @@
             double.TryParse(cells[1], out longitude);
             string name = cells[2];
             // Do not fail if one record parsing fails, return null
+            TacoBell TB = new TacoBell();
+            TB.Name = name;
+            TB.Location = new Point() { Latitude = lattitude, Longitude = longitude };
+            
+            return TB;
+           
         }
     }
 }
